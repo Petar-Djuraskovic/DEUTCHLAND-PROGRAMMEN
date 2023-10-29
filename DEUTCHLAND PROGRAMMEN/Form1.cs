@@ -32,7 +32,7 @@ namespace DEUTCHLAND_PROGRAMMEN
             int incrementX = (label.Left - targetX) / remaining;
             int incrementY = (label.Top - targetY) / remaining;
 
-            return new Point(incrementX, incrementY); ;
+            return new Point(incrementX, incrementY);
         }
 
         private void timer1_Tick(object sender, EventArgs e)
