@@ -21,32 +21,35 @@ namespace DEUTCHLAND_PROGRAMMEN
         Pen olovka = new Pen(Color.Aqua, 3);
         Random rand = new Random();
         int remaining = 0;
-        Point incrementPoint = new Point(0, 0);
+        (float X, float Y) incrementPoint;
 
-        private Point randomizeLabelPosition(Label label, int remaining)
+        private (float X, float Y) randomizeLabelPosition(Label label, int remaining)
         {
-            int targetY = rand.Next(0, 800);
-            int targetX = rand.Next(0, 620);
+            float targetY = rand.Next(0, 700);
+            float targetX = rand.Next(0, 620);
             //Console.WriteLine($"targetX: {targetX}, targetY: {targetY}");
 
-            int incrementX = (label.Left - targetX) / remaining;
-            int incrementY = (label.Top - targetY) / remaining;
+            float incrementX = (targetX - label.Left) / remaining;
+            float incrementY = (targetY - label.Top) / remaining;
 
-            return new Point(incrementX, incrementY); ;
+            (float X, float Y) returnTuple = (incrementX, incrementY);
+
+            return returnTuple;
         }
 
         private void timer1_Tick(object sender, EventArgs e)
         {
             if (remaining != 0)
             {
-                label1.Top += incrementPoint.Y;
-                label1.Left += incrementPoint.X;
+                label1.Top += (int)incrementPoint.Y;
+                label1.Left += (int)incrementPoint.X;
                 remaining--;
             }
             else
             {
                 remaining = 100;
                 incrementPoint = randomizeLabelPosition(label1, remaining);
+                Console.WriteLine(incrementPoint.ToString());
             }
         }
 
