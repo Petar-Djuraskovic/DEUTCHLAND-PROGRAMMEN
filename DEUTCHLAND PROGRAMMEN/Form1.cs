@@ -21,10 +21,13 @@ namespace DEUTCHLAND_PROGRAMMEN
 
         int x, y, a;
         Pen olovka = new Pen(Color.Black, 3);
+        Brush cetka = new SolidBrush(Color.Black);
         Random rand = new Random();
         int remaining = 0;
         (float X, float Y) incrementPoint;
         bool crtanje = false;
+        bool landscaping = false;
+        bool radialing = false;
 
         private (float X, float Y) randomizeLabelPosition(Label label, int remaining)
         {
@@ -80,6 +83,8 @@ namespace DEUTCHLAND_PROGRAMMEN
             Console.WriteLine(e.X + "   " + e.Y);
 
             if (radioButton2.Checked) { crtanje = true; }
+            if (radioButton4.Checked) { landscaping = true; }
+            if (radioButton5.Checked) { radialing = true; }
         }
 
         private void radioButton3_CheckedChanged(object sender, EventArgs e)
@@ -95,7 +100,27 @@ namespace DEUTCHLAND_PROGRAMMEN
                 Graphics g = pictureBox4.CreateGraphics();
                 int x2 = e.X, y2 = e.Y;
 
-                g.DrawLine(olovka, x, y, x2, y2);
+                g.DrawLine(olovka, x, y ,x2 , y2);
+
+                x = x2; y = y2;
+            }
+
+            if (radialing)
+            {
+                Graphics g = pictureBox4.CreateGraphics();
+                int x2 = e.X, y2 = e.Y;
+
+                g.DrawLine(olovka, x2, y2, (float)numericUpDown1.Value, (float)numericUpDown1.Value);
+
+                x = x2; y = y2;
+            }
+
+            if (landscaping)
+            {
+                Graphics g = pictureBox4.CreateGraphics();
+                int x2 = e.X, y2 = e.Y;
+
+                g.FillRectangle(cetka, x, y, x2, y2);
 
                 x = x2; y = y2;
             }
@@ -110,6 +135,8 @@ namespace DEUTCHLAND_PROGRAMMEN
             }
 
             crtanje = false;
+            landscaping = false;
+            radialing = false;
         }
 
         private void numericUpDown1_ValueChanged(object sender, EventArgs e)
