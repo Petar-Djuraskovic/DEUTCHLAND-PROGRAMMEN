@@ -86,5 +86,8 @@
   <ItemGroup>
     <None Include="Resources\deutchlandflagge2.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\maxresdefault %281%29.jpg" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
