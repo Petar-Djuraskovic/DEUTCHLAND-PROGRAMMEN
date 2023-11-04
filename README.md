@@ -1,3 +1,3 @@
 # DEUTCHLAND-PROGRAMMEN
 
-glupi github
+zdravo nastavniče
