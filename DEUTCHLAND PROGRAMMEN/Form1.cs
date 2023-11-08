@@ -21,7 +21,6 @@ namespace DEUTCHLAND_PROGRAMMEN
 
         int x, y, a;
         Pen olovka = new Pen(Color.Black, 3);
-        Brush cetka = new SolidBrush(Color.Black);
         Random rand = new Random();
         int remaining = 0;
         (float X, float Y) incrementPoint;
@@ -77,6 +76,14 @@ namespace DEUTCHLAND_PROGRAMMEN
             pictureBox3.BackColor = colorDialog1.Color;
         }
 
+        private void pictureBox5_Click(object sender, EventArgs e)
+        {
+            colorDialog2.ShowDialog();
+            Graphics g = CreateGraphics();
+            Brush cetka = new SolidBrush(colorDialog2.Color);
+            g.FillRectangle(cetka, pictureBox4.Left, pictureBox4.Top, pictureBox4.Width, pictureBox4.Height);
+        }
+
         private void pictureBox4_MouseDown(object sender, MouseEventArgs e)
         {
             x = e.X; y = e.Y;
@@ -120,11 +127,14 @@ namespace DEUTCHLAND_PROGRAMMEN
                 Graphics g = pictureBox4.CreateGraphics();
                 int x2 = e.X, y2 = e.Y;
 
+                Brush cetka = new SolidBrush(colorDialog1.Color);
+
                 g.FillRectangle(cetka, x, y, x2, y2);
 
                 x = x2; y = y2;
             }
         }
+
 
         private void pictureBox4_MouseUp(object sender, MouseEventArgs e)
         {
