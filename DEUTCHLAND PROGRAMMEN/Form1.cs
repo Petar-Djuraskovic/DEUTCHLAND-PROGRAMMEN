@@ -79,9 +79,10 @@ namespace DEUTCHLAND_PROGRAMMEN
         private void pictureBox5_Click(object sender, EventArgs e)
         {
             colorDialog2.ShowDialog();
-            Graphics g = CreateGraphics();
+            Graphics g = pictureBox4.CreateGraphics();
             Brush cetka = new SolidBrush(colorDialog2.Color);
-            g.FillRectangle(cetka, pictureBox4.Left, pictureBox4.Top, pictureBox4.Width, pictureBox4.Height);
+            g.FillRectangle(cetka, 0, 0, 699, 408);
+            pictureBox5.BackColor = colorDialog2.Color;
         }
 
         private void pictureBox4_MouseDown(object sender, MouseEventArgs e)
